@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+</head>
+<body>
+  <div id="container">
+    <div id="title">
+      <h1>自動化テスト対象ページ</h1>
+    </div>
+
+    <div id="content">
+      <p>名前:</p>
+      <input type="text" id="nameField" value="">
+
+      <p>メールアドレス:</p>
+      <input type="email" id="emailField" value="">
+
+      <p>パスワード:</p>
+      <input type="password" id="passwordField" value="">
+
+      <div id="errorContainer"></div>
+
+      <button onclick="navigateToProject()">プロジェクトに移動</button>
+    </div>
+  </div>
+
+  <script>
+    function validateForm() {
+      var nameField = document.getElementById("nameField");
+      var emailField = document.getElementById("emailField");
+      var passwordField = document.getElementById("passwordField");
+      var errorContainer = document.getElementById("errorContainer");
+      var isValid = true;
+
+      errorContainer.innerHTML = ""; // エラーメッセージをリセット
+
+      // 必須項目の入力チェックとエラーメッセージの表示を行います
+      if (nameField.value === "") {
+        errorContainer.innerHTML += "<p class='error-message'>名前は必須項目です。</p>";
+        isValid = false;
+      }
+
+      if (emailField.value === "") {
+        errorContainer.innerHTML += "<p class='error-message'>メールアドレスは必須項目です。</p>";
+        isValid = false;
+      }
+
+      if (passwordField.value === "") {
+        errorContainer.innerHTML += "<p class='error-message'>パスワードは必須項目です。</p>";
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    function navigateToProject() {
+      var isValid = validateForm();
+
+      if (isValid) {
+        // 別のプロジェクトのURLへ遷移します
+        window.location.href = "https://example.com/project";
+      }
+    }
+  </script>
+</body>
+</html>
