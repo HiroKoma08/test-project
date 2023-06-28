@@ -6,6 +6,7 @@
 </head>
 <body>
   <div id="container">
+
     <div id="title">
       <h1>自動化テスト対象ページ</h1>
     </div>
@@ -25,14 +26,15 @@
       <button onclick="navigateToProject()">プロジェクトに移動</button>
     </div>
   </div>
+</body>
 
-  <script>
-    function validateForm() {
-      var nameField = document.getElementById("nameField");
-      var emailField = document.getElementById("emailField");
-      var passwordField = document.getElementById("passwordField");
-      var errorContainer = document.getElementById("errorContainer");
-      var isValid = true;
+<script>
+  function validateForm() {
+    var nameField = document.getElementById("nameField");
+    var emailField = document.getElementById("emailField");
+    var passwordField = document.getElementById("passwordField");
+    var errorContainer = document.getElementById("errorContainer");
+    var isValid = true;
 
       errorContainer.innerHTML = ""; // エラーメッセージをリセット
 
@@ -56,12 +58,12 @@
     }
 
       // ボタン押下時
-    function navigateToProject() {
-      var isValid = validateForm();
+      function navigateToProject() {
+        var isValid = validateForm();
 
-      if (isValid) {
-        var name = document.getElementById("nameField").value;
-        var email = document.getElementById("emailField").value;
+        if (isValid) {
+          var name = document.getElementById("nameField").value;
+          var email = document.getElementById("emailField").value;
 
         // 別のプロジェクトのURLにパラメータを付与して遷移します
         var url = "https://hirokoma08.github.io/test-project/confirm?name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
@@ -70,5 +72,4 @@
     }
 
   </script>
-</body>
-</html>
+  </html>

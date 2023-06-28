@@ -5,55 +5,42 @@
   <title>Confirmation Page</title>
 </head>
 <body>
-  <h1>入力内容確認画面</h1>
+  <div id="container">
+    <div id="title">
+      <h1>入力内容確認画面</h1>
+    </div>
 
+    <div id="content">
+      
+      <h1 class="heading">入力内容</h1>
+
+      <div class="field">
+        <span class="label">Name:</span>
+        <span class="value" id="name"></span>
+      </div>
+
+      <div class="field">
+        <span class="label">Email:</span>
+        <span class="value" id="email"></span>
+      </div>
+
+      <div class="button-container">
+        <button class="button" onclick="goBack()">戻る</button>
+      </div>
+
+    </div>
+  </div>
+</body>
 <script>
-  // パラメータを受け取る
   const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get("name");
   const email = urlParams.get("email");
 
-  const container = document.createElement("div");
-  container.classList.add("container");
-  document.body.appendChild(container);
+  document.getElementById("name").textContent = name;
+  document.getElementById("email").textContent = email;
 
-  const heading = document.createElement("h1");
-  heading.classList.add("heading");
-  heading.textContent = "Confirmation Page";
-  container.appendChild(heading);
-
-  function createField(label, value) {
-    const field = document.createElement("div");
-    field.classList.add("field");
-
-    const labelElement = document.createElement("span");
-    labelElement.classList.add("label");
-    labelElement.textContent = label + ":";
-    field.appendChild(labelElement);
-
-    const valueElement = document.createElement("span");
-    valueElement.classList.add("value");
-    valueElement.textContent = value;
-    field.appendChild(valueElement);
-
-    return field;
-  }
-
-  container.appendChild(createField("Name", name));
-  container.appendChild(createField("Email", email));
-
-  const buttonContainer = document.createElement("div");
-  buttonContainer.classList.add("button-container");
-  container.appendChild(buttonContainer);
-
-  const backButton = document.createElement("button");
-  backButton.classList.add("button");
-  backButton.textContent = "戻る";
-  backButton.addEventListener("click", function() {
+  function goBack() {
     history.back();
-  });
-  buttonContainer.appendChild(backButton);
+  }
 </script>
-
-</body>
 </html>
