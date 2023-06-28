@@ -1,35 +1,49 @@
-# features/step_definitions/confirmation_steps.rb
+require 'capybara'
+require 'capybara/dsl'
+require 'rack/test'
+require_relative '../../app'
+require 'sinatra/base'
 
-Given(/^ページにアクセスする$/) do
+World(Rack::Test::Methods)
+
+def app
+  require_relative '../../app.rb'  # エントリーファイルのパスを適切に指定してください
+  Sinatra::Application
+end
+
+
+
+World(Capybara::DSL)
+
+
+Given('I am on the confirmation page') do
   visit 'https://hirokoma08.github.io/test-project/'
 end
 
-
-When(/^名前に"([^"]*)"と入力する$/) do |name|
-  fill_in 'nameField', with: 'テスト太郎'
+When('I enter the name {string}') do |name|
+  fill_in 'nameField', with: name
 end
 
-When(/^メールアドレスに"([^"]*)"と入力する$/) do |email|
-  fill_in 'emailField', with: 'test@test.com'
+When('I enter the email {string}') do |email|
+  fill_in 'emailField', with: email
 end
 
-When(/^パスワードに"([^"]*)"と入力する$/) do |password|
-  fill_in 'passwordField', with: 'test1234'
+When('I enter the password {string}') do |password|
+  fill_in 'passwordField', with: password
 end
 
-
-When(/^プロジェクトに移動するボタンをクリックする$/) do
-  click_button 'プロジェクトに移動'
+When('I click the {string} button') do |button_text|
+  click_button button_text
 end
 
-Then(/^入力内容確認画面が表示される$/) do
+Then('I should see the confirmation page') do
   expect(page).to have_content '入力内容確認画面'
 end
 
-Then(/^入力内容が"([^"]*)"となっている$/) do |name|
+Then('the name should be {string}') do |name|
   expect(page).to have_content "Name: #{name}"
 end
 
-Then(/^入力メールアドレスが"([^"]*)"となっている$/) do |email|
+Then('the email should be {string}') do |email|
   expect(page).to have_content "Email: #{email}"
 end
