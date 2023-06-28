@@ -58,10 +58,15 @@
       var isValid = validateForm();
 
       if (isValid) {
-        // 別のプロジェクトのURLへ遷移します
-        window.location.href = "https://example.com/project";
+        var name = document.getElementById("nameField").value;
+        var email = document.getElementById("emailField").value;
+
+        // 別のプロジェクトのURLにパラメータを付与して遷移します
+        var url = "https://example.com/project?name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
+        window.location.href = url;
       }
     }
+
   </script>
 </body>
 </html>
