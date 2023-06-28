@@ -36,7 +36,7 @@
 
       errorContainer.innerHTML = ""; // エラーメッセージをリセット
 
-      // 必須項目の入力チェックとエラーメッセージの表示を行います
+      // 必須項目の入力チェックとエラーメッセージの表示を行う
       if (nameField.value === "") {
         errorContainer.innerHTML += "<p class='error-message'>名前は必須項目です。</p>";
         isValid = false;
@@ -55,6 +55,7 @@
       return isValid;
     }
 
+      // ボタン押下時
     function navigateToProject() {
       var isValid = validateForm();
 
