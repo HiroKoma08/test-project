@@ -1,8 +1,11 @@
-require 'rack/test'
-require_relative '../../app'
+require 'capybara'
+require 'capybara/dsl'
+require 'capybara/cucumber'
+require 'rspec/expectations'
 
-World(Rack::Test::Methods)
+World(RSpec::Matchers)
+World(Capybara::DSL)
 
-def app
-  Sinatra::Application
-end
+Capybara.default_driver = :selenium_chrome
+Capybara.app_host = 'http://www.google.com'
+Capybara.run_server = false

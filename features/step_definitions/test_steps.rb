@@ -1,19 +1,16 @@
 require 'capybara'
 require 'capybara/dsl'
+require 'capybara/cucumber'
 require 'rack/test'
 require_relative '../../app'
 require 'sinatra/base'
 
-World(Rack::Test::Methods)
+World(Capybara::DSL)
 
 def app
-  require_relative '../../app.rb'  # エントリーファイルのパスを適切に指定してください
   Sinatra::Application
 end
 
-
-
-World(Capybara::DSL)
 
 
 Given('I am on the confirmation page') do
@@ -36,9 +33,10 @@ When('I click the {string} button') do |button_text|
   click_button button_text
 end
 
-Then('I should see the confirmation page') do
-  expect(page).to have_content '入力内容確認画面'
+Then /^I should see the confirmation page$/ do
+  expect(page).to have_content("入力内容確認画面")
 end
+
 
 Then('the name should be {string}') do |name|
   expect(page).to have_content "Name: #{name}"
