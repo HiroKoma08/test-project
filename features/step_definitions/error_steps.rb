@@ -15,8 +15,8 @@ Given('画面が表示されている1') do
   visit 'https://hirokoma08.github.io/test-project/'
 end
 
-When('IDが{string}のボタンを押下') do |button_text|
-  click_button button_text
+When('必須項目未入力でIDが {string} のボタンを押下') do |button_id|
+  find_button(button_id).click
 end
 
 Then('名前未入力エラーが表示されている {string}') do |expected_text|

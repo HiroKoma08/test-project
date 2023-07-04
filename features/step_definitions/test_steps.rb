@@ -16,7 +16,8 @@ Given('画面が表示されている2') do
 end
 
 When('名前を入力 {string}') do |name|
-  fill_in 'nameField', with: name
+  today = Date.today.strftime('%Y-%m-%d')
+  fill_in 'nameField', with: "#{name} - #{today}"
 end
 
 When('メールアドレスを入力 {string}') do |email|
@@ -27,8 +28,8 @@ When('パスワードを入力 {string}') do |password|
   fill_in 'passwordField', with: password
 end
 
-When('IDが{string}のボタンを押下') do |button_text|
-  click_button button_text
+When('IDが {string} のボタンを押下') do |button_id|
+  find_button(button_id).click
 end
 
 Then(/^確認画面に遷移する$/) do
