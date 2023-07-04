@@ -24,7 +24,7 @@
 
       <div id="errorContainer"></div>
 
-      <button onclick="navigateToProject()">プロジェクトに移動</button>
+      <button onclick="navigateToProject()" id="navigateButton">プロジェクトに移動</button>
     </div>
   </div>
 </body>
@@ -58,19 +58,18 @@
       return isValid;
     }
 
-      // ボタン押下時
-      function navigateToProject() {
-        var isValid = validateForm();
-
-        if (isValid) {
-          var name = document.getElementById("nameField").value;
-          var email = document.getElementById("emailField").value;
+    // ボタン押下時
+  function navigateToProject() {
+    var isValid = validateForm();
+    if (isValid) {
+      var name = document.getElementById("nameField").value;
+      var email = document.getElementById("emailField").value;
 
         // 別のプロジェクトのURLにパラメータを付与して遷移します
-        var url = "https://hirokoma08.github.io/test-project/confirm?name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
-        window.location.href = url;
-      }
+      var url = "https://hirokoma08.github.io/test-project/confirm?name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
+      window.location.href = url;
     }
+  }
 
-  </script>
-  </html>
+</script>
+</html>

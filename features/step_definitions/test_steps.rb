@@ -11,37 +11,34 @@ def app
   Sinatra::Application
 end
 
-
-
-Given('I am on the confirmation page') do
+Given('画面が表示されている2') do
   visit 'https://hirokoma08.github.io/test-project/'
 end
 
-When('I enter the name {string}') do |name|
+When('名前を入力 {string}') do |name|
   fill_in 'nameField', with: name
 end
 
-When('I enter the email {string}') do |email|
+When('メールアドレスを入力 {string}') do |email|
   fill_in 'emailField', with: email
 end
 
-When('I enter the password {string}') do |password|
+When('パスワードを入力 {string}') do |password|
   fill_in 'passwordField', with: password
 end
 
-When('I click the {string} button') do |button_text|
+When('IDが{string}のボタンを押下') do |button_text|
   click_button button_text
 end
 
-Then /^I should see the confirmation page$/ do
+Then(/^確認画面に遷移する$/) do
   expect(page).to have_content("入力内容確認画面")
 end
 
-
-Then('the name should be {string}') do |name|
+Then('名前が表示されている {string}') do |name|
   expect(page).to have_content "Name: #{name}"
 end
 
-Then('the email should be {string}') do |email|
+Then('メールアドレスが表示されている {string}') do |email|
   expect(page).to have_content "Email: #{email}"
 end
